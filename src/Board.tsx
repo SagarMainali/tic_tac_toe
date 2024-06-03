@@ -1,4 +1,4 @@
-function App() {
+function Board() {
 
   return (
     <div>
@@ -6,4 +6,4 @@ function App() {
   )
 }
 
-export default App
+export default Board
