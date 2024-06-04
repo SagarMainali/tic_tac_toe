@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import Square from "./Square"
 import checkWinner from "./checkWinner";
@@ -9,6 +9,8 @@ function Board() {
   const [squareValues, setSquareValues] = useState(Array(9).fill(null));
   // whether to mark the box with an 'X' or 'O'
   const [isXNext, setIsXNext] = useState(true)
+  // for 'New Game' button
+  const [newGameOption, setNewGameOption] = useState(false)
 
   const handleSquareClick = (index: number) => {
     // do nothing if the box already has a value or the game has already a winner
@@ -37,6 +39,19 @@ function Board() {
     status = 'Player: ' + (isXNext ? 'X' : 'O')
   }
 
+  const createNewgame = () => {
+    const nullValues = Array(squareValues.length).fill(null)
+    setSquareValues(nullValues)
+    setIsXNext(true)
+    setNewGameOption(false)
+  }
+
+  useEffect(() => {
+    if (winner) {
+      setNewGameOption(true)
+    }
+  }, [winner])
+
   return (
     <div className="board">
       <h3 className="status">{status}</h3>
@@ -55,6 +70,9 @@ function Board() {
         <Square value={squareValues[7]} index={7} handleSquareClick={handleSquareClick} />
         <Square value={squareValues[8]} index={8} handleSquareClick={handleSquareClick} />
       </div>
+      {
+        newGameOption && <button onClick={createNewgame}>New game</button>
+      }
     </div>
   )
 }
