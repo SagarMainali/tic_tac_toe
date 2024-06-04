@@ -1,7 +1,11 @@
-function Square() {
+interface Props {
+    value: null | string
+}
+
+function Square({ value }: Props) {
     return (
         <button className="button">
-            X
+            {value}
         </button>
     )
 }
