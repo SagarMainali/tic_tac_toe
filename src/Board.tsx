@@ -1,8 +1,19 @@
+import Square from "./Square"
+
 function Board() {
 
   return (
-    <div>
-    </div>
+    <>
+      <Square />
+      <Square />
+      <Square />
+      <Square />
+      <Square />
+      <Square />
+      <Square />
+      <Square />
+      <Square />
+    </>
   )
 }
 
