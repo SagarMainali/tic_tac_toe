@@ -4,11 +4,17 @@ import Square from "./Square"
 
 function Board() {
 
+  // value of each individual box
   const [squareValues, setSquareValues] = useState(Array(9).fill(null));
-
+  // whether to mark the box with an 'X' or 'O'
   const [isXNext, setIsXNext] = useState(true)
 
   const handleSquareClick = (index: number) => {
+    // do nothing if the box already has a value
+    if (squareValues[index]) {
+      return
+    }
+
     const newSquareValues = squareValues.slice()
     if (isXNext) {
       newSquareValues[index] = 'X'
@@ -16,6 +22,7 @@ function Board() {
     else {
       newSquareValues[index] = 'O'
     }
+
     setSquareValues(newSquareValues)
     setIsXNext(prevState => !prevState)
   }
