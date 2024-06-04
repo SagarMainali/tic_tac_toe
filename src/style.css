@@ -15,6 +15,11 @@
     align-items: center;
 }
 
+.row {
+    display: flex;
+    align-items: center;
+}
+
 .button {
     height: 50px;
     width: 50px;
