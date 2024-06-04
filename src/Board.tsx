@@ -1,6 +1,7 @@
 import { useState } from "react"
 
 import Square from "./Square"
+import checkWinner from "./checkWinner";
 
 function Board() {
 
@@ -10,8 +11,8 @@ function Board() {
   const [isXNext, setIsXNext] = useState(true)
 
   const handleSquareClick = (index: number) => {
-    // do nothing if the box already has a value
-    if (squareValues[index]) {
+    // do nothing if the box already has a value or the game has already a winner
+    if (squareValues[index] || checkWinner(squareValues)) {
       return
     }
 
@@ -27,8 +28,18 @@ function Board() {
     setIsXNext(prevState => !prevState)
   }
 
+  const winner = checkWinner(squareValues)
+  let status = ''
+  if (winner) {
+    status = winner + ' won!'
+  }
+  else {
+    status = 'Player: ' + (isXNext ? 'X' : 'O')
+  }
+
   return (
     <div className="board">
+      <h3 className="status">{status}</h3>
       <div className="row">
         <Square value={squareValues[0]} index={0} handleSquareClick={handleSquareClick} />
         <Square value={squareValues[1]} index={1} handleSquareClick={handleSquareClick} />
