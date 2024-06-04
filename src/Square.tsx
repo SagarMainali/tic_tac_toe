@@ -1,10 +1,12 @@
 interface Props {
-    value: null | string
+    value: null | string,
+    index: number,
+    handleSquareClick: (index: number) => void
 }
 
-function Square({ value }: Props) {
+function Square({ value, index, handleSquareClick }: Props) {
     return (
-        <button className="button">
+        <button className="button" onClick={() => handleSquareClick(index)}>
             {value}
         </button>
     )
