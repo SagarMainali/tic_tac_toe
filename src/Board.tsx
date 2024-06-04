@@ -6,10 +6,18 @@ function Board() {
 
   const [squareValues, setSquareValues] = useState(Array(9).fill(null));
 
+  const [isXNext, setIsXNext] = useState(true)
+
   const handleSquareClick = (index: number) => {
     const newSquareValues = squareValues.slice()
-    newSquareValues[index] = 'X'
+    if (isXNext) {
+      newSquareValues[index] = 'X'
+    }
+    else {
+      newSquareValues[index] = 'O'
+    }
     setSquareValues(newSquareValues)
+    setIsXNext(prevState => !prevState)
   }
 
   return (
