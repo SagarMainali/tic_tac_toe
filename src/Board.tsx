@@ -3,17 +3,23 @@ import Square from "./Square"
 function Board() {
 
   return (
-    <>
-      <Square />
-      <Square />
-      <Square />
-      <Square />
-      <Square />
-      <Square />
-      <Square />
-      <Square />
-      <Square />
-    </>
+    <div>
+      <div>
+        <Square />
+        <Square />
+        <Square />
+      </div>
+      <div>
+        <Square />
+        <Square />
+        <Square />
+      </div>
+      <div>
+        <Square />
+        <Square />
+        <Square />
+      </div>
+    </div>
   )
 }
 
