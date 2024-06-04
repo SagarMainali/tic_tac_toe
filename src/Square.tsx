@@ -1,6 +1,6 @@
 function Square() {
     return (
-        <button>
+        <button className="button">
             X
         </button>
     )
