@@ -35,8 +35,11 @@ function Board() {
   if (winner) {
     status = winner + ' won!'
   }
+  else if (squareValues.every(element => element !== null)) {
+    status = 'Draw'
+  }
   else {
-    status = 'Player: ' + (isXNext ? 'X' : 'O')
+    status = 'Next player: ' + (isXNext ? 'X' : 'O')
   }
 
   const createNewgame = () => {
@@ -47,10 +50,10 @@ function Board() {
   }
 
   useEffect(() => {
-    if (winner) {
+    if (status.includes('won') || status === 'Draw') {
       setNewGameOption(true)
     }
-  }, [winner])
+  }, [squareValues])
 
   return (
     <div className="board">
@@ -71,7 +74,7 @@ function Board() {
         <Square value={squareValues[8]} index={8} handleSquareClick={handleSquareClick} />
       </div>
       {
-        newGameOption && <button onClick={createNewgame}>New game</button>
+        newGameOption && <button style={{ 'marginTop': '10px' }} onClick={createNewgame}>New game</button>
       }
     </div>
   )
